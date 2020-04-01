@@ -1,0 +1,95 @@
+<div class="section section-buttons">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg bg-primary">
+                    <div class="container">
+                        <a class="navbar-brand" href="#">WELCOME {{currentUserData.name}}</a>
+                        
+                        <div class="collapse navbar-collapse justify-content-end" id="navbar-menu-icon">
+                            <ul class="navbar-nav">
+                                <li *ngIf="userLoggedIn" class="nav-item">
+                                    <a class="nav-link" href="javascript:void(0)" (click)="addSong()"><i class="fa fa-plus" aria-hidden="true"></i> Add Song</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <div ngbDropdown class="dropdown" placement="bottom-left">
+                                    <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle><i class="nc-icon nc-single-02" aria-hidden="true"></i></a>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger dropdown-menu-right">
+                                            <a *ngIf="!userLoggedIn" (click)="login()" class="dropdown-item">Login</a>
+                                            <a *ngIf="userLoggedIn" (click)="logout()" class="dropdown-item">Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+</div>
+<br>
+
+<!--SONG TABLE -->
+<div class="table-users">
+    <div class="header">Top 10 Songs</div>
+    
+    <table cellspacing="0" *ngIf="!isLoading">
+       <tr>
+           <th>Sr.</th>
+          <th>Cover</th>
+          <th>Name</th>
+          <th>Singers</th>
+          <th>Release Date</th>
+          <th>Avg Rating</th>
+          <th width="230" *ngIf="userLoggedIn">Your Rating</th>
+       </tr>
+ 
+       <tr *ngFor='let song of songs | slice:0:10; let i=index'>
+        <!-- <tr *ngFor='let song of songs '> -->
+           <td>#{{i+1}}</td>
+          <!-- <td><img src="http://localhost:3000/assets/song_cover/{{song.cover}}" alt="" /></td> -->
+          <td>
+            <img src="http://localhost:3000/assets/song_cover/{{song.cover}}" class="img-thumbnail img-responsive" alt="Rounded Image">
+        </td>
+          <td>{{song.name}}</td>
+          <td>{{song.dispArtistList}}</td>
+          <td>{{song.dateOfRelease | date:'yyyy-MM-dd'}}</td>
+          <td>{{song.avgRating | number: '1.0-0'}}</td>
+          <td *ngIf="userLoggedIn">
+            <ngb-rating [(ngModel)]=song.currentUserRating (click)='onRatingChange(song.id)'></ngb-rating>
+            <hr>
+            <pre>Rate: <b>{{song.currentUserRating}}</b></pre>
+          </td>
+
+       </tr>
+    </table>
+ </div>
+
+ <!--ARTIST TABLE -->
+<div class="table-users">
+    <div class="header">Top 10 Artists</div>
+    
+    <table cellspacing="0" *ngIf="!isLoading">
+       <tr>
+           <th>Sr.</th>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>Songs</th>
+          <th>Avg Rating</th>
+       </tr>
+ 
+       <tr *ngFor='let artist of artists | slice:0:10; let i=index'>
+        <!-- <tr *ngFor='let artist of artists'> -->
+           <td>#{{i+1}}</td>
+          <td>{{artist.name}}</td>
+          <td>{{artist.dob | date:'dd-MM-yyyy'}}</td>
+          <td>{{artist.dispSongList}}</td>
+          <td>{{artist.avgRating | number: '1.0-0'}}</td>
+       </tr>
+    </table>
+ </div>
+
+
+
+ 

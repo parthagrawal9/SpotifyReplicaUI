@@ -1,0 +1,156 @@
+<div class="section">
+    <div class="container">
+<br>
+      <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg bg-primary">
+                <div class="container">
+                    <a class="navbar-brand" href="#">WELCOME !!!</a>
+                    
+                    <div class="collapse navbar-collapse justify-content-end" id="navbar-menu-icon">
+                        <ul class="navbar-nav">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0)" (click)="goHome()"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                            </li>
+                            <li class="nav-item ">
+                                <div ngbDropdown class="dropdown" placement="bottom-left">
+                                <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle><i class="nc-icon nc-single-02" aria-hidden="true"></i></a>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger dropdown-menu-right">
+                                        <a (click)="logout()" class="dropdown-item">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+      
+        <div></div>
+        <h1>New Song</h1>
+        <hr>
+        <form #songForm="ngForm" class='col-sm-6'>
+          <div class="form-group">
+            <label for="name">Song Name</label>
+            <input #name="ngModel" name="newSong.name" [(ngModel)]='newSong.name' type="text" class="form-control" id="name" required>
+          
+          <div *ngIf="(name.dirty || name.touched)" class="text-danger">
+            <div *ngIf="invalidName()">
+              Invalid Name.
+            </div>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class='col-sm-12'>
+              <div class="row">
+                <div class='col-sm-12'>
+                        <div class="form-group">
+                          <label for="dor">Release Date</label><br>
+                          <input #releaseDate="ngModel" class='col-sm-12 form-control' required matInput type="date" name="newSong.dateOfRelease" [(ngModel)]="newSong.dateOfRelease">
+                        </div>
+                        <div *ngIf="(releaseDate.dirty || releaseDate.touched)" class="text-danger">
+                          <div *ngIf="invalidReleaseDate()">
+                            Invalid Release Date.
+                          </div>
+                          </div>
+                </div>
+            </div>
+                
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <img height="120px" width="120px" [src]="imageSrc || 'http://localhost:3000/assets/song_cover/default.jpg'" class="img-thumbnail img-responsive" alt="Rounded Image">
+            <input accept="image/png, image/jpeg" style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+            <button class="btn btn-danger btn-round" style="margin-left: 20px;" (click)="fileInput.click()"><i class="fa fa-upload"></i>Upload Image</button>
+        </div>
+
+        <div id="list" class="row" ng-controller="artistController">
+            <div class="form-group col-sm-8">
+                <label for="artistList">Artists</label>
+                <ng-multiselect-dropdown
+                    id='artistList'
+                    name = "selectedItems"
+                    [settings]="dropdownSettings"
+                    [placeholder]="'Artists'"
+                    [data]="dropdownList"
+                    [(ngModel)]="selectedItems"
+                    (onSelect)="onItemSelect($event)">
+                </ng-multiselect-dropdown>                    
+            </div>
+            
+            <div style="margin-top: 25px;" class="col-sm-3">
+                
+                <button type="button" (click)="frame.show()" class="btn btn-danger btn-round"><i class="fa fa-plus"></i> Add Artist</button>
+            </div>
+
+        </div>
+
+        <div>
+            <button [disabled]="invalidForm()" type="submit" (click)="addSong(songForm)" class="btn btn-success">Submit</button>
+        </div>
+      
+
+        <!-- MODAL FORM ARTIST -->
+      <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+          aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-header text-center">
+              <h4 class="modal-title  font-weight-bold">Add Artist</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+              <!--  -->
+             
+                    <form #artistForm="ngForm">
+                      <div class="form-group">
+                        <label for="name">Artist Name</label>
+                        <input #name2="ngModel" name="newArtist.bio" [(ngModel)]="newArtist.name" type="text" class="form-control" id="name" required>
+                      </div>
+                      <div *ngIf="(name2.dirty || name2.touched)" class="text-danger">
+                        <div *ngIf="invalidName2()">
+                          Invalid Name.
+                        </div>
+                      </div>
+            
+                      <div class="row">
+                        <div class='col-sm-12'>
+                                <div class="form-group">
+                                  <label for="dor">Date of Birth</label><br>
+                                  <input #birthDate="ngModel" class='col-sm-12 form-control' required matInput type="date" name="newArtist.dob" [(ngModel)]="newArtist.dob">
+                                  <div *ngIf="(birthDate.dirty || birthDate.touched)" class="text-danger">
+                                    <div *ngIf="invalidBirthDate()">
+                                      Invalid Birth Date.
+                                    </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="bmd-label-floating"> Artist Bio</label>
+                      <textarea name="newArtist.bio" [(ngModel)]="newArtist.bio" class="form-control" rows="5"></textarea>
+                    </div>
+      
+                    <div>
+                        <button [disabled]="invalidForm2()" type="submit" (click)="frame.hide();addArtist(artistForm)" class="btn btn-success">Submit</button>
+                    </div>
+                    </form>
+              <!--  -->
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  
+  </div>
+</div>
