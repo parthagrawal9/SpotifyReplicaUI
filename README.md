@@ -1,3 +1,6 @@
+Author: Parth Agrawal
+Contact: agrawal.parth9@gmail.com
+
 This repository is focusing on the UI of Spotify Replica App.
 For backend & DB Script kindly check "SpotifyReplica" repository. (https://github.com/parthagrawal9/SpotifyReplica)
 
