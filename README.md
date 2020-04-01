@@ -57,3 +57,60 @@ Application specifics (minimum requirements)
 TECH STACK:
     
     MEAN: MongoDB, ExpressJS, AngularJS, NodeJS
+
+APPLICATION:
+
+    - The theme is taken from Creative Tim and is modified as per the reqirements.
+
+    - Screenshots of the application are added in screenshots folder.
+
+    - Application contains 3 pages/modules
+
+        1. home (path: localhost:4200/#/home)
+
+            - It includes Top 10 Songs list and Top 10 Artists list.
+
+            - If the user is logged in he will get an option of rating the song and adding a new song and artist. ( login is must for rating and adding new song/artist)
+
+        2. newsong (path: localhost:4200/#/newsong)
+
+            - It includes form for adding new song and artist.
+
+            - Validations are implemented and are listed below in this document
+
+        3. login (signup) (path: localhost:4200/#/signup)
+
+            - Input for email and password
+
+
+RUN APPLICATION:
+
+    1. clone the repo
+
+    2. go to the application folder
+
+    3. Download Angular CLI
+
+    4. run `npm install` to install node_modules
+
+    5. `ng serve` to run the application
+
+VALIDATIONS:
+
+    Add Song Form
+
+        1. Song Name is required field
+
+        2. Song Release date is required field
+
+        3. Song Artist List is required
+
+    Add Artist Form
+
+        1. Artist Name is required field
+
+        2. Artist Birth date is required field
+
+
+
+
