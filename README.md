@@ -76,6 +76,8 @@ APPLICATION:
 
             - It includes form for adding new song and artist.
 
+            - While adding a new song, user can also add a new artist(in a popup form) without redirecting to any other page.
+
             - Validations are implemented and are listed below in this document
 
         3. login (signup) (path: localhost:4200/#/signup)
@@ -111,6 +113,15 @@ VALIDATIONS:
 
         2. Artist Birth date is required field
 
+DEPLOYMENT:
 
+    - To deploy UI go to root folder of the application.
 
+    - Run `ng build` command
+
+    - Copy the contents of dist folder to /var/www/html on your server using scp command
+
+    - Start httpd / apache2 service on the server
+
+    - The Ui is noe deployed. Check by visiting the server ip. :)
 
