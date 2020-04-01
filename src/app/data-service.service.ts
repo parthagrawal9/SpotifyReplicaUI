@@ -12,6 +12,7 @@ import { Rate } from './model/rate';
 export class DataServiceService {
 
   apiUrl = 'http://localhost:3000/';
+
   constructor(private _http:HttpClient) { }
 
   //SONGS

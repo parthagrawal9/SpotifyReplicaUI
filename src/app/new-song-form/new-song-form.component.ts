@@ -26,6 +26,8 @@ export class NewSongFormComponent implements OnInit {
 
   constructor(private loginservice: AuthenticationService, private router:Router, private dataService: DataServiceService) { }
 
+  url = this.dataService.apiUrl+'assets/song_cover/default.jpg'; 
+  
   ngOnInit() {
     
     this.loadData()

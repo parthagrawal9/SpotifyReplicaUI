@@ -16,6 +16,7 @@ import { User } from 'app/model/user';
 })
 export class BasicelementsComponent implements OnInit {
 
+  
   currentUserData: User;
   userLoggedIn:boolean = false;
   isLoading: boolean = true;
@@ -26,6 +27,8 @@ export class BasicelementsComponent implements OnInit {
     config: NgbRatingConfig) { 
       config.max = 5;
   }
+
+  url = this.dataService.apiUrl;
 
   async ngOnInit() {
     this.loadUser().then(()=>{

@@ -63,7 +63,7 @@
         </div>
 
         <div class="form-group ">
-            <img height="120px" width="120px" [src]="imageSrc || 'http://localhost:3000/assets/song_cover/default.jpg'" class="img-thumbnail img-responsive" alt="Rounded Image">
+            <img height="120px" width="120px" [src]="imageSrc || url" class="img-thumbnail img-responsive" alt="Rounded Image">
             <input accept="image/png, image/jpeg" style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
             <button class="btn btn-danger btn-round" style="margin-left: 20px;" (click)="fileInput.click()"><i class="fa fa-upload"></i>Upload Image</button>
         </div>
