@@ -62,7 +62,7 @@ APPLICATION:
 
     - The theme is taken from Creative Tim and is modified as per the reqirements.
 
-    - Screenshots of the application are added in screenshots folder.
+    - Screenshots of the application are added in screenshots folder. (https://github.com/parthagrawal9/SpotifyReplicaUI/tree/master/screenshots)
 
     - Http interceptor is used to add auth header to every outgoing Api call.
 
