@@ -4,6 +4,16 @@ Contact: agrawal.parth9@gmail.com
 This repository is focusing on the UI of Spotify Replica App.
 For backend & DB Script kindly check "SpotifyReplica" repository. (https://github.com/parthagrawal9/SpotifyReplica)
 
+Contents:
+
+    1. Problem statement
+    2. Tech Stack
+    3. Application Info
+    4. Running frontend 
+    5. Validations
+    6. Deployment
+    7. Running whole SpotifyReplica Application (Frontend and backend both)
+
 Problem Statement:
 
 Create a Spotify like website with basic CRUD and song listings using an MVC web-framework of your choice
