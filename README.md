@@ -96,7 +96,7 @@ APPLICATION:
             - Input for email and password
 
 
-RUN APPLICATION:
+RUN APPLICATION (UI):
 
     1. clone the repo
 
@@ -106,7 +106,7 @@ RUN APPLICATION:
 
     4. run `npm install` to install node_modules
 
-    5. `ng serve` to run the application
+    5. `ng serve` to run the application 
 
 VALIDATIONS:
 
@@ -136,3 +136,46 @@ DEPLOYMENT:
 
     - The Ui is now deployed. Check by visiting the server ip. :)
 
+RUN APPLICATION (FULL APPLICATION BACKEND & FRONTEND):
+
+    - Start Mongodb server & load the db with `loadData.js` script
+
+    - After running the script 3 collections will be added
+
+            - songs
+
+            - artists
+
+            - users
+
+    - Run Node application (check guide for running backend in `SpotifyReplica` repo [https://github.com/parthagrawal9/SpotifyReplica])
+
+    - Run Front End application
+
+    - Go to browser and visit localhost:4200
+
+    - Home page will be displayed first. It will display Top 10 Songs and Artitsts only.
+
+    - There is a login option on top-bar. On successful login you will be redirected to home page again but now user will get the option of rating the song and  add new song. (check screenshots for better understanding).
+
+        - If you are using the script for loading data 3 users are already created
+
+                - Parth
+                    - email: parth@abc.com
+                    - password: parth 
+                
+                - Parul
+                    - email: parul@abc.com
+                    - password: parul
+
+                - Nupur
+                    - email: nupur@abc.com
+                    - password: nupur
+    
+    - User will also see the rating provided by himself (if rated). If not it will show blank stars. Each user will get there own rating. 
+
+        - Lets assume there are 5 songs.
+        - One user rated 2 songs & 3 songs are not rated by him
+        - then the list of top songs will display star rating based on current user. If the user has not rated the song it will display empty stars.
+        - When the user clicks on rating(update the rating), the new rating will be added / updated in the database.
+        - Other users will get rating stars based on there previous rating. So each user can see their own rating only and get a more personalised experience.
